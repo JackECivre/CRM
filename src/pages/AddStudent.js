@@ -75,7 +75,7 @@ class AddStudent extends React.Component {
 
 
     handleSubmit(event) {
-        alert('A new Student was submitted: ' + this.state.value.full_name);
+        alert('A new Student was submitted: ' + this.state.full_name);
         console.log(this.state)
         event.preventDefault();
     }
@@ -111,7 +111,7 @@ class AddStudent extends React.Component {
                             <h3>Desired Courses: </h3><input placeholder=" Please Enter Desired Courses" type="text" name="interested_in_course" value={this.state.interested_in_course} onChange={(event) => this.handleInterestedCourseChange(event)} /><br />
                         </div>
                     </div>
-                    <input type="submit" value="Submit" onClick={() => addStudent()} />
+                    <input type="submit" value="Submit" onClick={(event) => this.handleSubmit(event)} />
                 </form>
 
             </div>
