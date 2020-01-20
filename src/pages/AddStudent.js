@@ -7,7 +7,6 @@ class AddStudent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            students: "",
             first_name: "",
             last_name: "",
             full_name: "",
@@ -48,37 +47,39 @@ class AddStudent extends React.Component {
         this.setState({ father: event.target.value });
     }
 
-    
+
     handleMotherChange(event) {
         this.setState({ mother: event.target.value });
     }
-    
+
     handleSpouseChange(event) {
         this.setState({ spouse: event.target.value });
     }
-    
+
     handleChildrenChange(event) {
         this.setState({ children: event.target.value });
     }
-    
+
     handleExistingSkillChange(event) {
         this.setState({ existing_magic_skills: event.target.value });
     }
-    
+
     handleDesiredSkillsChange(event) {
         this.setState({ desired_magic_skills: event.target.value });
     }
-    
+
     handleInterestedCourseChange(event) {
         this.setState({ interested_in_course: event.target.value });
     }
 
-
     handleSubmit(event) {
-        alert('A new Student was submitted: ' + this.state.full_name);
-        console.log(this.state)
         event.preventDefault();
+        console.log(this.state)
+        addStudent(this.state).then(
+            alert('A new Student was submitted: ' + this.state.full_name)
+        )
     }
+
 
 
     render() {
@@ -101,8 +102,8 @@ class AddStudent extends React.Component {
                         </div>
                         <div className="familyInput">
                             <h3>Father: </h3><input placeholder=" Please Enter Father's Name" type="text" name="father" value={this.state.father} onChange={(event) => this.handleFatherChange(event)} /><br />
-                            <h3>Mother: </h3><input placeholder=" Please Enter Mother's Name" type="text" name="mother" value={this.state.mother} onChange={(event) => this.handleMotherChange(event)}/><br  />
-                            <h3>Spouse: </h3><input placeholder=" Please Enter Spouse's Name" type="text" name="spouse" value={this.state.spouse} onChange={(event) => this.handleSpouseChange(event)}/><br  />
+                            <h3>Mother: </h3><input placeholder=" Please Enter Mother's Name" type="text" name="mother" value={this.state.mother} onChange={(event) => this.handleMotherChange(event)} /><br />
+                            <h3>Spouse: </h3><input placeholder=" Please Enter Spouse's Name" type="text" name="spouse" value={this.state.spouse} onChange={(event) => this.handleSpouseChange(event)} /><br />
                             <h3>Children: </h3><input placeholder=" Please Enter Children's Names" type="text" name="children" value={this.state.children} onChange={(event) => this.handleChildrenChange(event)} /><br />
                         </div>
                         <div className="magicInput">
