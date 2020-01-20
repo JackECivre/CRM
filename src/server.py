@@ -140,21 +140,25 @@ def add_student():
     
     for key in received_data.keys():
         new_student_key.append(key)
-    print("new student key is")
+    print("received_data")
     print(received_data)
+    # print("new student key is")
+  
+    student_key = len(list(students.keys()))
+    new_student_key = student_key + 1
+    students[new_student_key] = received_data
     
-    print(new_student_key)
-    print(new_student_key[0])
+    print(students)
+    # new_student_info = []
+    # for data in received_data.values():
+        # new_student_info.append(data)
+    # print("new student info is")
+    # print(new_student_info[0])
     
-    new_student_info = []
-    for data in received_data.values():
-        new_student_info.append(data)
-    print("new student info is")
-    print(new_student_info[0])
-    
-    students[new_student_key[0]] = new_student_info[0]
+    # students[new_student_key[0]] = new_student_info[0]
     # print(students)
     return "<h1>New Student Added !</h1>"
+
 
 
 # @app.route("/dashboard")
