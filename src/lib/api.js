@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "http://127.0.0.1:7000/";
+const baseUrl = "http://127.0.0.1:7001/";
 
 export function getStudentList(){
     return axios.get(`${baseUrl}list`)

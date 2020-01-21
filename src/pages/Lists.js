@@ -36,12 +36,12 @@ class Lists extends React.Component {
                 </div>
                 <hr />
                 <div className="studentsListDisplayBox">
-                    {this.state.studentKeys.map(array =>
+                    {this.state.studentKeys.map(el =>
 
-                        <div className="students" key={this.state.students[array].student_id}>
+                        <div className="students" key={this.state.students[el].student_id}>
 
 
-                            <Link to={`/profiles/${this.state.students[array].student_id}`} > {this.state.students[array].first_name} {this.state.students[array].last_name} </Link>
+                            <Link to={`/profiles/${this.state.students[el].student_id}`} > {this.state.students[el].first_name} {this.state.students[el].last_name} </Link>
 
                         </div>
                     )}

@@ -4,6 +4,7 @@ from flask import Flask, request
 from flask_cors import CORS, cross_origin
 import datetime
 import time
+import logging
 
 
 students = {
@@ -115,9 +116,10 @@ students = {
 }
 
 app = Flask(__name__)
-cors = CORS(app)
+cors = CORS(app, resources = {r"/list/*": {"origins": "*"}})
 app.config['CORS_HEADERS'] = 'Content-Type'
 
+logging.getLogger('flask_cors').level = logging.DEBUG
 
 @app.route("/list")
 @cross_origin()
@@ -137,26 +139,15 @@ def add_student():
     global students
     received_data = request.get_json()
     new_student_key = []
-    
     for key in received_data.keys():
         new_student_key.append(key)
     print("received_data")
     print(received_data)
-    # print("new student key is")
-  
     student_key = len(list(students.keys()))
     new_student_key = student_key + 1
     students[new_student_key] = received_data
     
     print(students)
-    # new_student_info = []
-    # for data in received_data.values():
-        # new_student_info.append(data)
-    # print("new student info is")
-    # print(new_student_info[0])
-    
-    # students[new_student_key[0]] = new_student_info[0]
-    # print(students)
     return "<h1>New Student Added !</h1>"
 
 
@@ -167,4 +158,4 @@ def add_student():
 
 
 if __name__ == "__main__":
-    app.run(host="localhost", port=7000, debug=True)
+    app.run(host="localhost", port=7001, debug=True)
