@@ -1,5 +1,6 @@
+
 import React from "react";
-import { getStudentList, addStudent } from "../lib/api";
+import { addStudent } from "../lib/api";
 
 // console.log(parseInt(this.state.studentKeys.length) + 1)
 

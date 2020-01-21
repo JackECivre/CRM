@@ -116,18 +116,18 @@ students = {
 }
 
 app = Flask(__name__)
-cors = CORS(app, resources = {r"/list/*": {"origins": "*"}})
+cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 logging.getLogger('flask_cors').level = logging.DEBUG
 
-@app.route("/list")
+@app.route("/list", methods=["GET"])
 @cross_origin()
 def get_student_list():
-    return students
+    return json.dumps(students)
 
 
-@app.route("/profiles/<path:key>")
+@app.route("/profiles/<path:key>", methods=["GET"])
 @cross_origin()
 def get_student_profile(key):
     return students[key]
@@ -141,14 +141,10 @@ def add_student():
     new_student_key = []
     for key in received_data.keys():
         new_student_key.append(key)
-    print("received_data")
-    print(received_data)
     student_key = len(list(students.keys()))
     new_student_key = student_key + 1
     students[new_student_key] = received_data
-    
-    print(students)
-    return "<h1>New Student Added !</h1>"
+    return received_data
 
 
 
