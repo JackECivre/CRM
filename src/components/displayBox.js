@@ -16,12 +16,12 @@ function DisplayBox() {
             <Route path="/profiles/:id" component={Profile} />
             <Route path="/addStudent" component={AddStudent} />
             <Route path="/dashBoard" component={DashBoard} />
-            <Route path="/list" component={Lists}/>
+            <Route path="/list" component={Lists} />
             <Route path="/hello" />
 
         </div >
 
-            )
-        }
-        
+    )
+}
+
 export default DisplayBox

@@ -2,7 +2,6 @@
 import React from "react";
 import { addStudent } from "../lib/api";
 
-// console.log(parseInt(this.state.studentKeys.length) + 1)
 
 class AddStudent extends React.Component {
     constructor(props) {
@@ -48,7 +47,6 @@ class AddStudent extends React.Component {
         this.setState({ father: event.target.value });
     }
 
-
     handleMotherChange(event) {
         this.setState({ mother: event.target.value });
     }
@@ -80,8 +78,6 @@ class AddStudent extends React.Component {
             alert('A new Student was submitted: ' + this.state.full_name)
         )
     }
-
-
 
     render() {
         return (

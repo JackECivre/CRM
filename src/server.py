@@ -119,7 +119,6 @@ app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-logging.getLogger('flask_cors').level = logging.DEBUG
 
 @app.route("/list", methods=["GET"])
 @cross_origin()
@@ -144,14 +143,15 @@ def add_student():
     student_key = len(list(students.keys()))
     new_student_key = student_key + 1
     students[new_student_key] = received_data
+    new_student_id = received_data["first_name"].replace(" ", "") + received_data["last_name"].replace(" ", "")
+    received_data["student_id"] = new_student_id
+    print(received_data)
     return received_data
-
 
 
 # @app.route("/dashboard")
 # @cross_origin()
 # def get_statistics():
-
 
 if __name__ == "__main__":
     app.run(host="localhost", port=7001, debug=True)
