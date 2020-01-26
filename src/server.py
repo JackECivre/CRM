@@ -129,6 +129,7 @@ def get_student_list():
 @app.route("/profiles/<path:key>", methods=["GET"])
 @cross_origin()
 def get_student_profile(key):
+
     return students[key]
 
 
@@ -138,13 +139,20 @@ def add_student():
     global students
     received_data = request.get_json()
     new_student_key = []
+    
     for key in received_data.keys():
         new_student_key.append(key)
+
     student_key = len(list(students.keys()))
     new_student_key = student_key + 1
     students[new_student_key] = received_data
+
     new_student_id = received_data["first_name"].replace(" ", "") + received_data["last_name"].replace(" ", "")
     received_data["student_id"] = new_student_id
+    
+    # if new_student_id in students[key]["student_id"]:
+
+        
     print(received_data)
     return received_data
 
